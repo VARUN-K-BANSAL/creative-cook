@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <%- include('navbar')%>
+
+        <div class="container">
+            <div class="center_right">
+                <form action="/user/register" method="POST" class="register-form">
+                    <h3>Sign Up</h3>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input name="userName" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input name="password" type="password" class="form-control" id="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Confirm Password</label>
+                        <input name="confirm_password" type="password" class="form-control" id="confirm_password">
+                    </div>
+                    <button type="submit" class="btn btn-primary login-btn">SIGN UP</button>
+                    <h5>Already a member?</h5>
+                    <a href="/user/login"><div class="registerBtn">Click here to Login</div></a>
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>

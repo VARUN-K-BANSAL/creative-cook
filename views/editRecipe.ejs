@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit - <%- name%></title>
+
+    <link rel="stylesheet" href="./../../css/login.css">
+</head>
+
+<body>
+    <%- include('navbar')%>
+
+        <div class="container">
+            <div class="center_right">
+                <form action="/recipe/edit/<%- _id%>" method="POST" class="register-form">
+                    <h3>Edit Recipe</h3>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input name="title" type="text" class="form-control" id="name" value=<%- name%>>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Ingredients</label>
+                        <input name="ingredients" type="text" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value=<%- ingredients%>>
+                        <div id="emailHelp" class="form-text">please add ingredients seprated by "<b>,</b>(commas)"
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Steps to prepare</label>
+                        <textarea rows="8" cols="2" name="description" type="text" class="form-control"
+                            id="description"><%- description%></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productImage" class="form-label">Update Image</label>
+                        <input name="Files" type="file" accept=".png,.jpg,.jpeg" class="form-control" id="fl2"
+                            onchange="imageUpload()">
+                    </div>
+                    <input type="text" style="display: none;" id="encodedImage" name="encodedImage">
+                    <button type="submit" class="btn btn-primary login-btn">Update Recipe</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            let base64string = ""
+
+            async function imageUpload() {
+                let file = document.querySelector('input[type="file"]')['files'][0]
+                let reader = new FileReader()
+                reader.onload = async function () {
+                    base64string = await reader.result.replace("data:", "")
+                        .replace(/^.+,/, "");
+
+                    imageBase64stringsep = base64string;
+                }
+
+                reader.readAsDataURL(file)
+
+                setTimeout(function () {
+                    $('#encodedImage')[0].value = base64string
+                }, 1000)
+            }
+        </script>
+        <script src="/scripts/checkLogin.js"></script>
+</body>
+
+</html>

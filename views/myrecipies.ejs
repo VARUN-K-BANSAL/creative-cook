@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <style>
+        a {
+            text-decoration: none !important;
+            color: black !important;
+        }
+        .recipe {
+            height: 250px;
+            width: 95%;
+            margin: 30px;
+            padding: 10px;
+            transition: 0.4s ease;
+            display: flex;
+            justify-content: space-around;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .recipe:hover {
+            box-shadow: 0 0 0 2px rgba(200, 200, 200, 0.3);
+            transform: scale(1.02);
+        }
+
+        .card_left {
+            width: 30%;
+        }
+
+        .card_right {
+            width: 65%;
+        }
+
+        img {
+            width: 95%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <%- include('navbar')%>
+    <a href="/recipe/add"><button>Add new Recipe</button></a>
+    <a href="/recipe/myrecipies"><button>My Recipes</button></a>
+    <div id="recipieContainer">
+        
+    </div>
+    <script src="/scripts/checkLogin.js"></script>
+    <script src="/scripts/getMyRecipies.js"></script>
+</body>
+</html>
